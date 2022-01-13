@@ -1,6 +1,5 @@
-<nav class="sidebar-nav">
+<!-- <nav class="sidebar-nav">
     <ul id="sidebarnav">
-        <!-- First level menu -->
         <li class="sidebar-item" [class.active]="showMenu === sidebarnavItem.title" *ngFor="let sidebarnavItem of sidebarnavItems"
             [routerLinkActive]="sidebarnavItem.submenu.length != 0 ? '' : 'active'">
             <div class="nav-small-cap" *ngIf="sidebarnavItem.extralink === true">{{sidebarnavItem.title}}</div>
@@ -15,4 +14,30 @@
             <a href="htthttps://www.wrappixel.com/templates/monster-angular-dashboard/" class="btn d-block w-100 btn-danger">Upgrade to Pro</a>
         </li>
     </ul>
-</nav>
+</nav> -->
+
+<mat-drawer-container>
+
+  <mat-drawer mode="side" opened>
+    <img [src]="imagePath" alt="invozone logo" />
+    <div class="sidebar">
+      <button [routerLink]="['/admin/upload-menu']" mat-button color="primary">Upload Menu</button>
+      <mat-divider></mat-divider>
+
+      <button [routerLink]="['/user/upload-invoice']" mat-button color="primary">Upload Invoice</button>
+      <mat-divider></mat-divider>
+
+      <button [routerLink]="['/user/invoice-list']" mat-button color="primary">List All Invoices</button>
+      <mat-divider></mat-divider>
+
+      <button [routerLink]="['/admin/client-list']" mat-button color="primary">List All Users</button>
+    </div>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+    <!-- <app-upload-menu></app-upload-menu> -->
+
+  </mat-drawer-content>
+
+</mat-drawer-container>

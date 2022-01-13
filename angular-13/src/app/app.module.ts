@@ -40,20 +40,30 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 };
 
 const Approutes: Routes = [
-  { path: "upload-menu", component: UploadMenuComponent, pathMatch: "full" },
   {
-    path: "upload-invoice",
-    component: UploadInvoiceComponent,
+    path: "admin/upload-menu",
+    component: UploadMenuComponent,
     pathMatch: "full",
   },
   {
-    path: "client-list",
+    path: "admin/client-list",
     component: ClientsListingComponent,
     pathMatch: "full",
   },
   {
-    path: "invoice-list",
+    path: "user/upload-invoice",
+    component: UploadInvoiceComponent,
+    pathMatch: "full",
+  },
+
+  {
+    path: "user/invoice-list",
     component: InvoiceListingComponent,
+    pathMatch: "full",
+  },
+  {
+    path: "dashboard",
+    component: SidebarComponent,
     pathMatch: "full",
   },
   { path: "", redirectTo: "login", pathMatch: "full" },

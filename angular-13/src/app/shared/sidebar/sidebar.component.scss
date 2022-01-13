@@ -1,0 +1,35 @@
+// .example-container {
+//   width: 400px;
+//   height: 200px;
+//   margin: 10px;
+//   border: 1px solid #555;
+
+//   ::ng-deep .mat-button {
+//     display: block !important;
+//   }
+// }
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: auto;
+  padding: 5px;
+  justify-content: center;
+
+  button {
+    height: 120px;
+  }
+
+  img {
+    height: 20px;
+    width: 20px;
+  }
+
+}
+
+mat-drawer-container {
+  height: 100%;
+
+
+
+}

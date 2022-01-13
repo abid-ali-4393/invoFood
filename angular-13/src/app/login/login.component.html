@@ -1,37 +1,33 @@
-
 <div class="center">
-       <!-- <h1>Invozone Foodies System</h1> -->
-   <div class="login-wrapper" >
+  <!-- <h1>Invozone Foodies System</h1> -->
+  <div class="login-wrapper">
 
-        <mat-card class="box">
-          <mat-card-header>
-            <mat-card-title class="title">Log in</mat-card-title>
-          </mat-card-header>
-      
-          <form class="example-form">
-            <mat-card-content>
-              <mat-form-field appearance="outline" class="example-full-width">
-                <mat-label>Username</mat-label>
-                <input matInput >
-              </mat-form-field>
-      
-              <mat-form-field appearance="outline" class="example-full-width">
-                  <mat-label>Password</mat-label>
-                <input matInput >
-              </mat-form-field>
-              <div class="right-hor">
-              <a [routerLink]="['/register']" routerLinkActive="router-link-active">Register</a>
-              </div>
-            </mat-card-content>
-            <div class="center-hor">
-            <button  mat-raised-button color="primary" class="btn">Log in</button>
-            </div>
-          </form>
-        </mat-card>
-      
-    </div>
+    <mat-card class="box">
+      <mat-card-header>
+        <mat-card-title class="title">Log in</mat-card-title>
+      </mat-card-header>
+
+      <form [formGroup]="loginForm" (ngSubmit)="login()" class="example-form">
+        <mat-card-content>
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Email</mat-label>
+            <input id="email" formControlName="email" type="email" matInput>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Password</mat-label>
+            <input type="password" id="password" formControlName="password" matInput>
+          </mat-form-field>
+          <div class="right-hor">
+            <a [routerLink]="['/register']" routerLinkActive="router-link-active">Register</a>
+          </div>
+        </mat-card-content>
+        <div class="center-hor">
+          <button mat-raised-button color="primary" class="btn">Log in</button>
+        </div>
+      </form>
+    </mat-card>
+
+  </div>
 
 </div>
-
-
-
