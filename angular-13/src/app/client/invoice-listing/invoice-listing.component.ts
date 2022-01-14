@@ -21,18 +21,24 @@ export class InvoiceListingComponent implements OnInit {
     "invoice_from_date",
     "invoice_to_date",
   ];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  // dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  dataSource: MatTableDataSource<PeriodicElement>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-  }
+  // ngAfterViewInit() {
+  //   this.dataSource.paginator = this.paginator;
+  // }
 
   getAllInvoices() {
     this.invoiceService.getInvoicesList().subscribe(
       (result) => {
-        ELEMENT_DATA = result.payload;
+        // ELEMENT_DATA = result.payload;
+        this.dataSource = new MatTableDataSource<PeriodicElement>(
+          result.payload
+        );
+
+        this.dataSource.paginator = this.paginator;
       },
       (error) => {
         console.log(error.message);
@@ -48,4 +54,4 @@ export interface PeriodicElement {
   invoice_to_date: Date;
 }
 
-let ELEMENT_DATA: PeriodicElement[];
+// let ELEMENT_DATA: PeriodicElement[];

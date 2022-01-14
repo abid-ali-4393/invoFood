@@ -27,10 +27,13 @@ export class LoginComponent implements OnInit {
       (result) => {
         console.log(result);
         let role = result.payload.role;
+        localStorage.setItem("token", result.payload.token);
 
-        if (role === "user") {
-          this.router.navigate(["/dashboard"]);
-        }
+        this.router.navigate(["/admin/upload-menu"]);
+
+        // if (role === "user") {
+        //   this.router.navigate(["'/dashboard'"]);
+        // }
 
         this.logedIn = true;
       },
