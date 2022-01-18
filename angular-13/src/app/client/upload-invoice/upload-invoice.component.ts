@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormControl } from "@angular/forms";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { InvoiceService } from "../services/invoice.service";
 
 @Component({
@@ -13,14 +13,20 @@ export class UploadInvoiceComponent implements OnInit {
 
   ngOnInit(): void {
     this.uploadInvoiceForm = new FormGroup({
-      invoiceTitle: new FormControl(),
+      invoiceTitle: new FormControl("", [Validators.required]),
       invoiceAttach: new FormControl(),
-      invoiceFromDate: new FormControl(),
-      invoiceToDate: new FormControl(),
-      invoiceAmount: new FormControl(),
+      invoiceFromDate: new FormControl("", [Validators.required]),
+      invoiceToDate: new FormControl("", [Validators.required]),
+      invoiceAmount: new FormControl("", [
+        Validators.required,
+        Validators.min(0),
+      ]),
     });
   }
 
+  get getControls() {
+    return this.uploadInvoiceForm.controls;
+  }
   uploadInvoice() {
     // console.log(this.uploadInvoiceForm.value);
     let data: object;

@@ -31,6 +31,7 @@ import { RegisterComponent } from "./register/register.component";
 import { ClientsListingComponent } from "./admin/clients-listing/clients-listing.component";
 import { UploadInvoiceComponent } from "./client/upload-invoice/upload-invoice.component";
 import { InvoiceListingComponent } from "./client/invoice-listing/invoice-listing.component";
+import { SassPracticeComponent } from "./shared/sass-practice/sass-practice.component";
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -74,6 +75,11 @@ const Approutes: Routes = [
   },
   { path: "", redirectTo: "login", pathMatch: "full" },
   { path: "login", component: LoginComponent, pathMatch: "full" },
+  {
+    path: "sass-practice",
+    component: SassPracticeComponent,
+    pathMatch: "full",
+  },
   { path: "register", component: RegisterComponent, pathMatch: "full" },
 ];
 
@@ -90,6 +96,7 @@ const Approutes: Routes = [
     ClientsListingComponent,
     UploadInvoiceComponent,
     InvoiceListingComponent,
+    SassPracticeComponent,
   ],
   imports: [
     CommonModule,

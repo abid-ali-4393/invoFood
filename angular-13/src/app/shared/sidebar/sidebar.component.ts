@@ -15,7 +15,7 @@ export class SidebarComponent implements OnInit {
   showMenu = "";
   showSubMenu = "";
   public sidebarnavItems: RouteInfo[] = [];
-  imagePath = "'../../assets/invozone_logo.png'";
+  imagePath = "../../assets/invozone_logo.png";
 
   // this is for the open close
   addExpandClass(element: string) {

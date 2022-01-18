@@ -12,6 +12,9 @@
             <mat-label>invoice title</mat-label>
             <input id="invoiceTitle" formControlName="invoiceTitle" matInput appearance="outline">
           </mat-form-field>
+          <div *ngIf="getControls.invoiceTitle.touched && getControls.invoiceTitle.invalid">
+            <div *ngIf="getControls.invoiceTitle.errors.required">Invoice Title is Required</div>
+          </div>
 
           <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>Attach Invoice</mat-label>
@@ -23,17 +26,28 @@
             <input id="invoiceFromDate" formControlName="invoiceFromDate" type="date" matInput>
           </mat-form-field>
 
+          <div *ngIf="getControls.invoiceFromDate.touched && getControls.invoiceFromDate.invalid">
+            <div *ngIf="getControls.invoiceFromDate.errors.required">Invoice From Date is Required</div>
+          </div>
 
           <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>invoice to date</mat-label>
             <input id="invoiceToDate" formControlName="invoiceToDate" type="date" matInput>
           </mat-form-field>
 
+
+          <div *ngIf="getControls.invoiceToDate.touched && getControls.invoiceToDate.invalid">
+            <div *ngIf="getControls.invoiceToDate.errors.required">Invoice To Date is Required</div>
+          </div>
           <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>invoice amount</mat-label>
             <input id="invoiceAmount" formControlName="invoiceAmount" type="number" matInput>
           </mat-form-field>
 
+          <div *ngIf="getControls.invoiceAmount.touched && getControls.invoiceAmount.invalid">
+            <div *ngIf="getControls.invoiceAmount.errors.required">Invoice Amount is Required</div>
+            <div *ngIf="getControls.invoiceAmount.errors.min">Invoice Amount can't be less than 0</div>
+          </div>
 
         </mat-card-content>
 

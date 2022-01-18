@@ -1,0 +1,174 @@
+$primaryColor: #1174ca !global;
+$padding: 10px;
+$margin: 5px;
+
+
+
+p {
+  color: $primaryColor;
+
+}
+
+
+
+
+
+//variables
+$myFont: Helvetica,
+sans-serif;
+$myColor: red;
+$myFontSize: 18px;
+$myWidth: 680px;
+
+body {
+  font-family: $myFont;
+  font-size: $myFontSize;
+  color: $myColor;
+}
+
+#container {
+  width: $myWidth;
+}
+
+//variable scope
+$myColor: red;
+
+h1 {
+  $myColor: green;
+  color: $myColor;
+}
+
+p {
+  color: $myColor;
+}
+
+$myColor: red;
+
+h1 {
+  $myColor: green !global;
+  color: $myColor;
+}
+
+p {
+  color: $myColor;
+}
+
+//nested rules
+
+nav {
+  ul {
+
+    list-style: none;
+  }
+
+  li {
+
+    padding: $padding;
+    margin: $margin;
+    display: inline-block;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+body {
+  margin: 0%;
+  padding: 100px;
+
+  font: {
+    weight: bold;
+    size: 18px;
+    family: Helvetica, sans-serif;
+  }
+
+}
+
+//@import in sass
+/* refer to other files for import*/
+
+//@mixin is a concept similar to functions in other programming languages.
+@mixin important-text {
+  color: red;
+  font-size: 25px;
+  font-weight: bold;
+  border: 1px solid blue;
+}
+
+
+.danger {
+  @include important-text;
+  background-color: green;
+}
+
+//multiple mixins within one mixin
+@mixin special-text {
+  @include important-text;
+  @include link;
+  @include special-border;
+}
+
+
+//parametrized @mixins
+@mixin bordered($color, $width) {
+  border: $width solid $color;
+}
+
+.myArticle {
+  @include bordered(blue, 1px); // Call mixin with two values
+}
+
+.myNotes {
+  @include bordered(red, 2px); // Call mixin with two values
+}
+
+
+//default values for mixin parameters 
+@mixin bordered($color: blue, $width: 1px) {
+  border: $width solid $color;
+}
+
+.myTips {
+  @include bordered($color: orange);
+}
+
+
+//@extend inheritance in sass
+.button-basic {
+  border: none;
+  padding: 15px 30px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.button-report {
+  @extend .button-basic;
+  background-color: red;
+}
+
+.button-submit {
+  @extend .button-basic;
+  background-color: green;
+  color: white;
+}
+
+equivalent css .button-basic,
+.button-report,
+.button-submit {
+  border: none;
+  padding: 15px 30px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.button-report {
+  background-color: red;
+}
+
+.button-submit {
+  background-color: green;
+  color: white;
+}

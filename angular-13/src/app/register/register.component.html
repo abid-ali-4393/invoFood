@@ -11,18 +11,34 @@
         <mat-card-content>
           <mat-form-field appearance="outline" class="example-full-width">
             <mat-label>Username</mat-label>
-            <input id="userName" formControlName="userName" matInput>
+            <input id="name" formControlName="name" matInput>
           </mat-form-field>
+
+          <div *ngIf="getControls.name.touched && getControls.name.invalid">
+            <div *ngIf="getControls.name.errors.required"> User name is Required</div>
+          </div>
 
           <mat-form-field appearance="outline" class="example-full-width">
             <mat-label>Email</mat-label>
             <input id="email" formControlName="email" type="email" matInput>
           </mat-form-field>
 
+
+          <div *ngIf="getControls.email.touched && getControls.email.invalid">
+            <div *ngIf="getControls.email.errors.required"> email is Required</div>
+            <div *ngIf="getControls.email.errors.email"> email should be in proper format</div>
+          </div>
+
           <mat-form-field appearance="outline" class="example-full-width">
             <mat-label>Password</mat-label>
             <input id="password" formControlName="password" type="password" matInput>
           </mat-form-field>
+
+
+          <div *ngIf="getControls.password.touched && getControls.password.invalid">
+            <div *ngIf="getControls.password.errors.required"> password is Required</div>
+            <div *ngIf="getControls.password.errors.email"> password should be at least 8 characters </div>
+          </div>
 
           <mat-form-field appearance="outline" class="example-full-width">
             <mat-label>Choose a role...</mat-label>
@@ -31,6 +47,11 @@
               </mat-option>
             </mat-select>
           </mat-form-field>
+
+
+          <div *ngIf="getControls.role.touched && getControls.role.invalid">
+            <div *ngIf="getControls.role.errors.required"> role is Required</div>
+          </div>
 
         </mat-card-content>
 

@@ -1,5 +1,10 @@
 import { Component, OnInit } from "@angular/core";
-import { FormControl, FormGroup } from "@angular/forms";
+import {
+  AbstractControl,
+  FormControl,
+  FormGroup,
+  Validators,
+} from "@angular/forms";
 import { MenuClientsService } from "../services/menu-clients/menu-clients.service";
 
 @Component({
@@ -13,13 +18,17 @@ export class UploadMenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.uploadMenuForm = new FormGroup({
-      menuTitle: new FormControl(),
+      menuTitle: new FormControl("", [Validators.required]),
       menuAttach: new FormControl(),
-      fromDate: new FormControl(),
-      toDate: new FormControl(),
+      fromDate: new FormControl("", [Validators.required]),
+      toDate: new FormControl("", [Validators.required]),
     });
   }
 
+  get getControl() {
+    // console.log(this.uploadMenuForm.controls[controlName]);
+    return this.uploadMenuForm.controls;
+  }
   //upload menu
   uploadMenu() {
     // console.log(this.uploadMenuForm.value);

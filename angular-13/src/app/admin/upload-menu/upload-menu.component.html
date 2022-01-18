@@ -7,35 +7,51 @@
         </mat-card-title>
       </mat-card-header>
 
-      <form [formGroup]="uploadMenuForm" (ngSubmit)="uploadMenu()" class="example-form">
+      <form [formGroup]="uploadMenuForm" (ngSubmit)="uploadMenu()" class="example-form" novalidate>
 
         <mat-card-content>
+
+
           <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>Menu Title</mat-label>
             <input id="menuTitle" matInput formControlName="menuTitle">
           </mat-form-field>
 
+          <div *ngIf="getControl.menuTitle.touched && getControl.menuTitle.invalid">
+            <div *ngIf="getControl.menuTitle.errors.required"> menu title is required.</div>
+            <!-- <div *ngIf="getControl.menuTitle.errors?.minlength">Minimum 4 character are required.</div> -->
+          </div>
+
+
           <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>Attach Image</mat-label>
-            <input id="menuAttach" formControlName="menuAttach" type="text" matInput>
+            <input id="menuAttach" formControlName="menuAttach" matInput>
           </mat-form-field>
+
 
           <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>From Date</mat-label>
             <input id="fromDate" formControlName="fromDate" type="date" matInput>
           </mat-form-field>
 
+          <div *ngIf="getControl.fromDate.touched && getControl.fromDate.invalid">
+            <div *ngIf="getControl.fromDate.errors.required">Menu from date is required</div>
+          </div>
+
 
           <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>To Date</mat-label>
             <input id="toDate" formControlName="toDate" type="date" matInput>
           </mat-form-field>
+          <div *ngIf="getControl.toDate.touched && getControl.toDate.invalid">
+            <div *ngIf="getControl.toDate.errors.required">Menu To Date is required</div>
+          </div>
 
 
         </mat-card-content>
 
         <div class="center-hor">
-          <button mat-raised-button color="primary" class="btn">Upload Menu</button>
+          <button type="submit" mat-raised-button color="primary" class="btn">Upload Menu</button>
         </div>
       </form>
     </mat-card>
